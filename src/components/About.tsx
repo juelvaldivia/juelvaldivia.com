@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Social, { SocialNetworks, SocialNetwork } from './Social';
+import Social from './Social';
 
 const AboutStyle = styled.div`
   text-align: center;
@@ -19,19 +19,6 @@ const AboutDesc = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
-
-const linkedIn: SocialNetwork = {
-  name: 'linkedin',
-  url: 'https://linkedin.com/in/juelvaldivia'
-};
-const github: SocialNetwork = {
-  name: 'github',
-  url: 'https://github.com/juelvaldivia'
-};
-
-const socialNetworks: SocialNetworks = {
-  items: [linkedIn, github]
-};
 
 const Main = () => {
   return (
@@ -57,7 +44,7 @@ const Main = () => {
       </AboutDesc>
       <AboutDesc>
         <AboutBio>Estoy en todas las redes sociales como Juel Valdivia</AboutBio>
-        <Social items={socialNetworks.items}></Social>
+        <Social></Social>
       </AboutDesc>
     </AboutStyle>
   );

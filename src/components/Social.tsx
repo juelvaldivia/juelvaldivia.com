@@ -1,5 +1,10 @@
-import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { FaGithub, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+
+import { GetSocialNetworks, SocialNetworks, SocialNetwork } from '../core/socialNetwork';
+import { SocialNetworksInMemory } from '../core/data/memory';
+import { DataError } from '../core/common';
 
 const SocialStyle = styled.div`
   margin: 0 auto;
@@ -21,61 +26,70 @@ const SocialAnchor = styled.a`
   text-decoration: none;
   font-size: 1.2em;
 `;
-const SocialIcon = styled.i`
-  color: ${(props) => props.theme.color};
-`;
 
-const facebook = {
-  color: '#5998df'
+const getIconByName = (name: string) => {
+  if (name === 'twitter') return <FaTwitter />;
+  if (name === 'linkedin') return <FaLinkedinIn />;
+  if (name === 'github') return <FaGithub />;
+
+  return <div></div>;
 };
 
-const twitter = {
-  color: '#5998df'
+const handleError = (error: DataError) => {
+  switch (error.kind) {
+    case 'UnexpectedError': {
+      return {
+        kind: 'ErrorSocialNetworksState',
+        error: error.error.message
+      };
+    }
+  }
 };
 
-const linkedin = {
-  color: '#5998df'
+const Social: React.FC = () => {
+  // TODO: implement better a state handler
+  const emptySocialNetwork: SocialNetworks = [];
+  const [socialNetworks, setSocialNetworks] = useState(emptySocialNetwork);
+  const [error, setError] = useState({ kind: 'WithoutError', error: '' });
+
+  useEffect(() => {
+    const getSocialNetworks = async () => {
+      const repository = new SocialNetworksInMemory([]);
+      const useCase = new GetSocialNetworks(repository);
+      const result = await useCase.execute();
+
+      result.evaluate(
+        (socialNetworks) => setSocialNetworks(socialNetworks),
+        (error) => setError(handleError(error))
+      );
+    };
+
+    getSocialNetworks();
+  }, [socialNetworks]);
+
+  if (error.kind === 'ErrorSocialNetworksState') {
+    return <SocialStyle>{error.error}</SocialStyle>;
+  }
+
+  if (error.kind === 'WithoutError') {
+    return (
+      <SocialStyle>
+        {socialNetworks && (
+          <SocialUl>
+            {socialNetworks.map((item: SocialNetwork, index: number) => (
+              <SocialLi key={`social-${index}`}>
+                <SocialAnchor href={item.url} target="_blank">
+                  {getIconByName(item.name)}
+                </SocialAnchor>
+              </SocialLi>
+            ))}
+          </SocialUl>
+        )}
+      </SocialStyle>
+    );
+  } else {
+    return <div></div>;
+  }
 };
-
-const github = {
-  color: '#fff'
-};
-
-const getColor = (name: String) => {
-  if (name === 'facebook') return facebook;
-  if (name === 'twitter') return twitter;
-  if (name === 'linkedin') return linkedin;
-  if (name === 'github') return github;
-
-  return { color: '#fff' };
-};
-
-export interface SocialNetworks {
-  items: Array<SocialNetwork>;
-}
-
-export type SocialNetwork = {
-  name: string;
-  url: string;
-};
-
-const Social = (socialNetworks: SocialNetworks) => (
-  <SocialStyle>
-    {socialNetworks && (
-      <SocialUl>
-        {socialNetworks.items.map((item, index) => (
-          <SocialLi key={`social-${index}`}>
-            <SocialAnchor href={item.url} target="blank">
-              <ThemeProvider theme={getColor(item.name)}>
-                {item.name}
-                <SocialIcon className={`fa fa-${item.name}`} />
-              </ThemeProvider>
-            </SocialAnchor>
-          </SocialLi>
-        ))}
-      </SocialUl>
-    )}
-  </SocialStyle>
-);
 
 export default Social;
