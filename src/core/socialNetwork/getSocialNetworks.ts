@@ -13,7 +13,7 @@ export class GetSocialNetworks {
     try {
       return await this.socialNetworksRepository.all();
     } catch (error: any) {
-      throw new SocialNetworksError(error)
+      throw new SocialNetworksError(error);
     }
   }
 }

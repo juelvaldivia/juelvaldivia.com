@@ -28,6 +28,6 @@ export class SocialNetworksInMemory implements SocialNetworksRepository {
   }
 
   private getItems(): SocialNetworks {
-    return this.items
+    return this.items;
   }
 }
