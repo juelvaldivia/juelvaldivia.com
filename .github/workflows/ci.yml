@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - implement-pipelines
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        name: 'Check repository'
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        name: 'Set environment'
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Unit tests
+        run: npm test
