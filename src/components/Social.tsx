@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
-import { GetSocialNetworks, SocialNetworks, SocialNetwork } from '../core/socialNetwork';
-import { SocialNetworksInMemory } from '../core/data/memory';
-import { DataError } from '../core/common';
+import { SocialNetwork } from '../core/socialNetwork';
+import { useHandlerState } from '../common/useHandlerState';
+import { containers } from '../containers';
 
 const SocialStyle = styled.div`
   margin: 0 auto;
@@ -35,48 +35,30 @@ const getIconByName = (name: string) => {
   return <div></div>;
 };
 
-const handleError = (error: DataError) => {
-  switch (error.kind) {
-    case 'UnexpectedError': {
-      return {
-        kind: 'ErrorSocialNetworksState',
-        error: error.error.message
-      };
-    }
-  }
-};
-
 const Social: React.FC = () => {
-  // TODO: implement better a state handler
-  const emptySocialNetwork: SocialNetworks = [];
-  const [socialNetworks, setSocialNetworks] = useState(emptySocialNetwork);
-  const [error, setError] = useState({ kind: 'WithoutError', error: '' });
+  const socialNetworksHandlerState = containers.buildSocialNetworkHandleState();
+  const state = useHandlerState(socialNetworksHandlerState);
 
   useEffect(() => {
-    const getSocialNetworks = async () => {
-      const repository = new SocialNetworksInMemory([]);
-      const useCase = new GetSocialNetworks(repository);
-      const result = await useCase.execute();
-
-      result.evaluate(
-        (socialNetworks) => setSocialNetworks(socialNetworks),
-        (error) => setError(handleError(error))
-      );
+    const searchAllSocialNetworks = async () => {
+      socialNetworksHandlerState.searchAll();
     };
 
-    getSocialNetworks();
-  }, [socialNetworks]);
+    searchAllSocialNetworks();
+  }, [socialNetworksHandlerState]);
 
-  if (error.kind === 'ErrorSocialNetworksState') {
-    return <SocialStyle>{error.error}</SocialStyle>;
-  }
-
-  if (error.kind === 'WithoutError') {
-    return (
-      <SocialStyle>
-        {socialNetworks && (
+  switch (state.kind) {
+    case 'LoadingSocialNetworksState': {
+      return <SocialStyle>Loading..</SocialStyle>;
+    }
+    case 'ErrorSocialNetworksState': {
+      return <SocialStyle>Unexpected error</SocialStyle>;
+    }
+    case 'LoadedSocialNetworksState': {
+      return (
+        <SocialStyle>
           <SocialUl>
-            {socialNetworks.map((item: SocialNetwork, index: number) => (
+            {state.socialNetworks.map((item: SocialNetwork, index: number) => (
               <SocialLi key={`social-${index}`}>
                 <SocialAnchor href={item.url} target="_blank">
                   {getIconByName(item.name)}
@@ -84,11 +66,9 @@ const Social: React.FC = () => {
               </SocialLi>
             ))}
           </SocialUl>
-        )}
-      </SocialStyle>
-    );
-  } else {
-    return <div></div>;
+        </SocialStyle>
+      );
+    }
   }
 };
 
