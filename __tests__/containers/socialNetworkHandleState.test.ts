@@ -1,14 +1,14 @@
 
 import {
   SocialNetworksHandleState
-} from "../../src/containers/socialNetworks/socialNetworksHandleState";
+} from '../../src/containers/socialNetworks/socialNetworksHandleState';
 
 import {
   GetSocialNetworks,
   SocialNetworks,
   SocialNetworksError,
   SocialNetworksRepository
-} from "../../src/core/socialNetwork";
+} from '../../src/core/socialNetwork';
 
 class MockSocialNetworksRepository implements SocialNetworksRepository {
   async all(): Promise<SocialNetworks> {

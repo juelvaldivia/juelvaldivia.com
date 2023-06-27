@@ -1,15 +1,15 @@
-import { HandlerState } from "../../common";
+import { HandlerState } from '../../common';
 
-import { SocialNetworksState, socialNetworksInitialState } from "./socialNetworksState";
+import { SocialNetworksState, socialNetworksInitialState } from './socialNetworksState';
 import { GetSocialNetworks, SocialNetworksError } from '../../core/socialNetwork';
 
 export class SocialNetworksHandleState extends HandlerState<SocialNetworksState>{
   private getSocialNetworks: GetSocialNetworks;
 
   constructor(getSocialNetworks: GetSocialNetworks) {
-    super(socialNetworksInitialState)
+    super(socialNetworksInitialState);
 
-    this.getSocialNetworks = getSocialNetworks
+    this.getSocialNetworks = getSocialNetworks;
   }
 
   async searchAll() {
@@ -17,11 +17,11 @@ export class SocialNetworksHandleState extends HandlerState<SocialNetworksState>
       const socialNetworks = await this.getSocialNetworks.execute();
 
       this.changeState({
-        kind: "LoadedSocialNetworksState",
+        kind: 'LoadedSocialNetworksState',
         socialNetworks
-      })
+      });
     } catch (error) {
-      this.changeState(this.handleError(error))
+      this.changeState(this.handleError(error));
     }
   }
 

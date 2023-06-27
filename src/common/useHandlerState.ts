@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { HandlerState } from "./handlerState";
+import { useEffect, useState } from 'react';
+import { HandlerState } from './handlerState';
 
 export function useHandlerState<State>(handlerState: HandlerState<State>) {
     const [state, setState] = useState(handlerState.state);

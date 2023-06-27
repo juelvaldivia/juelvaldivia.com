@@ -1,5 +1,5 @@
-import { GetSocialNetworks } from "../../core/socialNetwork";
-import { SocialNetworksHandleState } from "./socialNetworksHandleState";
+import { GetSocialNetworks } from '../../core/socialNetwork';
+import { SocialNetworksHandleState } from './socialNetworksHandleState';
 import { SocialNetworksInMemory } from '../../core/data/memory';
 
 export function buildSocialNetworkHandleState(): SocialNetworksHandleState {

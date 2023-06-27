@@ -1,21 +1,21 @@
-import { SocialNetworks } from "../../core/socialNetwork";
+import { SocialNetworks } from '../../core/socialNetwork';
 
 export interface LoadingProductsState {
-    kind: "LoadingSocialNetworksState";
+    kind: 'LoadingSocialNetworksState';
 }
 
 export interface LoadedProductsState {
-    kind: "LoadedSocialNetworksState";
+    kind: 'LoadedSocialNetworksState';
     socialNetworks: SocialNetworks;
 }
 
 export interface ErrorProductsState {
-    kind: "ErrorSocialNetworksState";
+    kind: 'ErrorSocialNetworksState';
     error: string;
 }
 
 export type SocialNetworksState = LoadingProductsState | LoadedProductsState | ErrorProductsState;
 
 export const socialNetworksInitialState: SocialNetworksState = {
-    kind: "LoadingSocialNetworksState"
+    kind: 'LoadingSocialNetworksState'
 };
