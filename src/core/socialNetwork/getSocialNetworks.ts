@@ -1,4 +1,4 @@
-import { DataError, ResultEvaluator } from '../common';
+import { SocialNetworksError } from './errors';
 import { SocialNetworks } from './socialNetwork';
 import { SocialNetworksRepository } from './socialNetworkRepository';
 
@@ -9,13 +9,15 @@ export class GetSocialNetworks {
     this.socialNetworksRepository = repository;
   }
 
-  async execute(): Promise<ResultEvaluator<SocialNetworks, DataError>> {
+  async execute(): Promise<SocialNetworks> {
     try {
-      const socialNetworks = await this.socialNetworksRepository.all();
+      return await this.socialNetworksRepository.all();
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new SocialNetworksError(error.message, error);
+      }
 
-      return ResultEvaluator.ok(socialNetworks);
-    } catch (error: any) {
-      return ResultEvaluator.withError(error);
+      throw new SocialNetworksError('Unexpected error');
     }
   }
 }

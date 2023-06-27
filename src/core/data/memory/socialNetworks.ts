@@ -1,4 +1,5 @@
 import { SocialNetworks, SocialNetworksRepository } from '../../socialNetwork';
+import { DataError } from '../errors';
 
 const socialNetworks = [{
   name: 'linkedin',
@@ -14,15 +15,23 @@ const socialNetworks = [{
 export class SocialNetworksInMemory implements SocialNetworksRepository {
   private items: SocialNetworks = [];
 
-  constructor(items: SocialNetworks) {
-      this.items = items.length > 0 ? items : socialNetworks;
+  constructor(items: SocialNetworks | null) {
+      this.items = items || socialNetworks;
   }
 
-  async all() {
+  async all(): Promise<SocialNetworks> {
     try {
-      return this.items;
+      return this.getItems();
     } catch (error) {
-      throw error
+      if (error instanceof Error) {
+        throw new DataError(error.message);
+      }
+
+      throw new DataError('Unexpected error');
     }
+  }
+
+  private getItems(): SocialNetworks {
+    return this.items;
   }
 }
