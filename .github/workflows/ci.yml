@@ -2,8 +2,10 @@ name: Deploy
 
 on:
   push:
-    branches:
-      - implement-pipelines
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+    types: [opened, synchronize]
 
 jobs:
   deploy:
