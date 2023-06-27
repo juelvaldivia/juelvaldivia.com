@@ -22,8 +22,12 @@ export class SocialNetworksInMemory implements SocialNetworksRepository {
   async all(): Promise<SocialNetworks> {
     try {
       return this.getItems();
-    } catch (error: any) {
-      throw new DataError(error.message);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new DataError(error.message);
+      }
+
+      throw new DataError('Unexpected error');
     }
   }
 

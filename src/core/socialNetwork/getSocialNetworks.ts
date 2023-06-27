@@ -12,8 +12,12 @@ export class GetSocialNetworks {
   async execute(): Promise<SocialNetworks> {
     try {
       return await this.socialNetworksRepository.all();
-    } catch (error: any) {
-      throw new SocialNetworksError(error);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new SocialNetworksError(error.message, error);
+      }
+
+      throw new SocialNetworksError('Unexpected error');
     }
   }
 }

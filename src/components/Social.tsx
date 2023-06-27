@@ -28,9 +28,15 @@ const SocialAnchor = styled.a`
 `;
 
 const getIconByName = (name: string) => {
-  if (name === 'twitter') return <FaTwitter />;
-  if (name === 'linkedin') return <FaLinkedinIn />;
-  if (name === 'github') return <FaGithub />;
+  if (name === 'twitter') {
+    return <FaTwitter />;
+  }
+  if (name === 'linkedin') {
+    return <FaLinkedinIn />;
+  }
+  if (name === 'github') {
+    return <FaGithub />;
+  }
 
   return <div></div>;
 };

@@ -21,11 +21,13 @@ export class SocialNetworksHandleState extends HandlerState<SocialNetworksState>
         socialNetworks
       });
     } catch (error) {
-      this.changeState(this.handleError(error));
+      if (error instanceof Error) {
+        this.changeState(this.handleError(error));
+      }
     }
   }
 
-  private handleError(error: any): SocialNetworksState {
+  private handleError(error: Error): SocialNetworksState {
     if (error instanceof SocialNetworksError) {
       return {
         kind: 'ErrorSocialNetworksState',
