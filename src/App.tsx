@@ -1,17 +1,20 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-import About from './components/About';
-import Welcome from './components/Welcome';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Welcome />
-        <About />
-      </header>
-    </div>
+    <Router>
+      <Helmet>
+        <title>Juel Valdivia</title>
+        <meta name="description" content="Sitio web personal de Juel Valdivia" />
+      </Helmet>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 

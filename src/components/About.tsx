@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Social from './Social';
 
 const AboutStyle = styled.div`
   text-align: center;
@@ -20,7 +19,7 @@ const AboutDesc = styled.div`
   margin-right: auto;
 `;
 
-const Main = () => {
+const About = () => {
   return (
     <AboutStyle>
       <AboutDesc>
@@ -42,12 +41,8 @@ const Main = () => {
           equipos multidisciplinarios para lograr resultados exitosos.
         </AboutBio>
       </AboutDesc>
-      <AboutDesc>
-        <AboutBio>Estoy en todas las redes sociales como Juel Valdivia</AboutBio>
-        <Social></Social>
-      </AboutDesc>
     </AboutStyle>
   );
 };
 
-export default Main;
+export default About;
