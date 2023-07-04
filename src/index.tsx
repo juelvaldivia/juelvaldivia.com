@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { hydrate } from 'react-dom';
-import './index.css';
+
 import reportWebVitals from './reportWebVitals';
 
 const App = React.lazy(() => import('./App'));
