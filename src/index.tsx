@@ -1,18 +1,23 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { hydrate } from 'react-dom';
+
 import reportWebVitals from './reportWebVitals';
 
 const App = React.lazy(() => import('./App'));
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-  <React.StrictMode>
-    <Suspense fallback={<p>Cargando...</p>}>
+const rootElement = document.getElementById('root');
+
+if (rootElement && rootElement.hasChildNodes()) {
+  hydrate(<App />, rootElement);
+} else {
+  root.render(
+    <React.StrictMode>
       <App />
-    </Suspense>
-  </React.StrictMode>
-);
+    </React.StrictMode>
+  );
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

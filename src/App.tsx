@@ -1,18 +1,29 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
-import About from './components/About';
-import Welcome from './components/Welcome';
+import { ThemeProvider } from 'styled-components';
 
-function App() {
+import Home from './pages/Home';
+import { darkTheme, GlobalStyles } from './styles';
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Welcome />
-        <About />
-      </header>
-    </div>
+    <>
+      <Helmet>
+        <title>Juel Valdivia</title>
+        <meta name="description" content="Sitio web personal de Juel Valdivia" />
+      </Helmet>
+      <ThemeProvider theme={darkTheme}>
+        <GlobalStyles />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </>
   );
-}
+};
 
 export default App;
