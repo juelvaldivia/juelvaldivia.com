@@ -1,9 +1,10 @@
 import { HandlerState } from '../../common';
 
-import { SocialNetworksState, socialNetworksInitialState } from './socialNetworksState';
-import { GetSocialNetworks, SocialNetworksError } from '../../core/socialNetwork';
+import { SocialNetworksState, socialNetworksInitialState } from './getSocialNetworksState';
+import { GetSocialNetworks } from './getSocialNetworks';
+import { SocialNetworksError } from '../errors';
 
-export class SocialNetworksHandleState extends HandlerState<SocialNetworksState>{
+export class GetSocialNetworksHandlerState extends HandlerState<SocialNetworksState>{
   private getSocialNetworks: GetSocialNetworks;
 
   constructor(getSocialNetworks: GetSocialNetworks) {
@@ -30,14 +31,14 @@ export class SocialNetworksHandleState extends HandlerState<SocialNetworksState>
   private handleError(error: Error): SocialNetworksState {
     if (error instanceof SocialNetworksError) {
       return {
-        kind: 'ErrorSocialNetworksState',
+        kind: 'ErrorGetSocialNetworksState',
         error: error.message
       };
     }
 
     return {
-      kind: 'ErrorSocialNetworksState',
+      kind: 'ErrorGetSocialNetworksState',
       error: 'Unexpected error'
     };
-}
+  }
 }

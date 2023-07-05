@@ -1,5 +1,6 @@
-import { SocialNetworks, SocialNetworksRepository } from '../../socialNetwork';
-import { DataError } from '../errors';
+import { SocialNetworks } from '../../entities/socialNetwork';
+import { SocialNetworksRepository } from '../../socialNetwork';
+import { DataServiceError } from '../errors';
 
 const socialNetworks = [{
   name: 'linkedin',
@@ -24,10 +25,10 @@ export class SocialNetworksInMemory implements SocialNetworksRepository {
       return this.getItems();
     } catch (error) {
       if (error instanceof Error) {
-        throw new DataError(error.message);
+        throw new DataServiceError(error.message);
       }
 
-      throw new DataError('Unexpected error');
+      throw new DataServiceError('Unexpected error');
     }
   }
 
