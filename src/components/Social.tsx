@@ -4,8 +4,8 @@ import { AnimateFadeRight, Container, Link, List, ListItem } from '../styles';
 import { Github, LinkedIn, Twitter } from './Icons';
 
 import { useHandlerState } from '../common/useHandlerState';
-import { CoreApp } from '../core/app';
 import { SocialNetwork } from '../core/entities';
+import { useCoreApp } from '../App';
 
 const getIconByName = (name: string) => {
   if (name === 'twitter') {
@@ -22,17 +22,17 @@ const getIconByName = (name: string) => {
 };
 
 const Social: React.FC = () => {
-  // TODO: Handler better presentation App
-  const socialNetworksHandlerState = new CoreApp('memory').socialNetworksState();
-  const state = useHandlerState(socialNetworksHandlerState);
+  const coreApp = useCoreApp();
+  const socialNetworksState = coreApp.socialNetworksState();
+  const state = useHandlerState(socialNetworksState);
 
   useEffect(() => {
     const searchAllSocialNetworks = async () => {
-      socialNetworksHandlerState.searchAll();
+      socialNetworksState.searchAll();
     };
 
     searchAllSocialNetworks();
-  }, [socialNetworksHandlerState]);
+  }, [socialNetworksState]);
 
   switch (state.kind) {
     case 'LoadingSocialNetworksState': {
