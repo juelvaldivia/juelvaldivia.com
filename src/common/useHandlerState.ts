@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { HandlerState } from './handlerState';
+
+import { HandlerState } from '../core';
 
 export function useHandlerState<State>(handlerState: HandlerState<State>) {
     const [state, setState] = useState(handlerState.state);

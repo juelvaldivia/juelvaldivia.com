@@ -21,5 +21,44 @@ Run lint using:
 
 Build project using:
 ### `npm run build`
+#
+# Conventional commits
+
+## Write better commit messages to be happy
+
+## 1. Title (required)
+- Must be start with a capital letter, i.e.
+  #### `Add password validation test`
+  instead of
+  #### `add password validation test`
+
+## 2. Prefix (required)
+Indicates type of commit
+  - ## feat
+    #### `New feature to user.`
+  - ## fix
+    #### `Fix a bug that affects the user.`
+  - ## perf
+    #### `Changes that improve site performance.`
+  - ## build
+    #### `Changes in the build system, deployment or installation tasks.`
+  - ## ci
+    #### `Changes in continuos delivery.`
+  - ## docs
+    #### `Changes in documentation.`
+  - ## refactor
+    #### ` Refactoring of code such as variable or functions name changes..`
+  - ## style
+    #### `Formatting changes, tabs, spaces, or semicolons, etc. do not affects the user.`
+  - ## test
+    #### `Add test or refactor an existing code.`
 
 
+## 3. Section (optional)
+Location changed
+
+## Bad commit example:
+
+#### `add new code field to the user in login`
+## Good commit example:
+#### `feat(login): add new code field to the user`
