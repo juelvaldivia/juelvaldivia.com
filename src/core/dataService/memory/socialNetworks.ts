@@ -11,6 +11,18 @@ const socialNetworks = [{
 }, {
   name: 'twitter',
   url: 'https://twitter.com/juelvaldivia'
+}, {
+  name: 'mastodon',
+  url: 'https://mastodon.social/@juelvaldivia'
+}, {
+  name: 'medium',
+  url: 'https://medium.com/@juelvaldivia'
+}, {
+  name: 'youtube',
+  url: 'https://www.youtube.com/@juelvaldivia'
+}, {
+  name: 'instagram',
+  url: 'https://www.instagram.com/juelvaldivia'
 }];
 
 export class SocialNetworksInMemory implements SocialNetworksRepository {

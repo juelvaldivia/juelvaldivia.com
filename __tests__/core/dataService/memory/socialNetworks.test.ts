@@ -19,6 +19,10 @@ describe('Core', () => {
               { name: 'linkedin', url: 'https://linkedin.com/in/juelvaldivia' },
               { name: 'github', url: 'https://github.com/juelvaldivia' },
               { name: 'twitter', url: 'https://twitter.com/juelvaldivia' },
+              { name: 'mastodon', url: 'https://mastodon.social/@juelvaldivia' },
+              { name: 'medium', url: 'https://medium.com/@juelvaldivia' },
+              { name: 'youtube', url: 'https://www.youtube.com/@juelvaldivia' },
+              { name: 'instagram', url: 'https://www.instagram.com/juelvaldivia' }
             ]);
           });
 

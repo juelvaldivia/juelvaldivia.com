@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { AnimateFadeRight, Container, Link, List, ListItem } from '../styles';
-import { Github, LinkedIn, Twitter } from './Icons';
+import { Github, Instagram, LinkedIn, Mastodon, Medium, Twitter, Youtube } from './Icons';
 
 import { useHandlerState } from '../common/useHandlerState';
 import { SocialNetwork } from '../core/entities';
@@ -17,8 +17,24 @@ const getIconByName = (name: string) => {
   if (name === 'github') {
     return Github;
   }
+  if (name === 'mastodon') {
+    return Mastodon;
+  }
+  if (name === 'medium') {
+    return Medium;
+  }
+  if (name === 'youtube') {
+    return Youtube;
+  }
+  if (name === 'instagram') {
+    return Instagram;
+  }
 
-  return <div></div>;
+  return null;
+};
+
+const getName = (name: string) => {
+  return <span style={{ fontSize: '0.8em', fontWeight: 400 }}>{name}</span>;
 };
 
 const Social: React.FC = () => {
@@ -48,7 +64,7 @@ const Social: React.FC = () => {
             {state.socialNetworks.map((item: SocialNetwork, index: number) => (
               <ListItem key={`social-${index}`}>
                 <Link href={item.url} target="_blank">
-                  {getIconByName(item.name)}
+                  {getIconByName(item.name) || getName(item.name)}
                 </Link>
               </ListItem>
             ))}
