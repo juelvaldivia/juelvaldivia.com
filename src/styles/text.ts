@@ -5,7 +5,7 @@ import { AppTheme } from './themes';
 export const TextCenter = styled.div<{ theme: AppTheme }>`
   text-align: center;
   height: 100%;
-  width: 90%;
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -16,4 +16,5 @@ export const Text = styled.p`
   font-weight: ${props => props.theme.fontWeights.medium};
   padding: 0px 30px 0px 30px;
   text-indent: 15px;
+  white-space: pre-line;
 `;
