@@ -1,6 +1,6 @@
 [![Deploy](https://github.com/juelvaldivia/juelvaldivia.com/actions/workflows/ci.yml/badge.svg)](https://github.com/juelvaldivia/juelvaldivia.com/actions/workflows/ci.yml)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/064e3771-582f-43bb-86e5-18ba9afd656f/deploy-status)](https://app.netlify.com/sites/develop-juelvaldivia/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/064e3771-582f-43bb-86e5-18ba9afd656f/deploy-status)](https://app.netlify.com/sites/juelvaldivia/deploys)
 
 # Description
 
