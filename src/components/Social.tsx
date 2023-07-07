@@ -63,7 +63,7 @@ const Social: React.FC = () => {
           <List>
             {state.socialNetworks.map((item: SocialNetwork, index: number) => (
               <ListItem key={`social-${index}`}>
-                <Link rel="nofollow noopener noreferrer me" href={item.url} target="_blank">
+                <Link rel="me" href={item.url} target="_blank">
                   {getIconByName(item.name) || getName(item.name)}
                 </Link>
               </ListItem>
