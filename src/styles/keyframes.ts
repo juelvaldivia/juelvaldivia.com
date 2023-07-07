@@ -63,3 +63,15 @@ export const jumpIn = keyframes`
     transform: scale(1)
   }
 `;
+
+export const twinkling = keyframes`
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
