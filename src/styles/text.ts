@@ -5,7 +5,7 @@ import { AppTheme } from './themes';
 export const TextCenter = styled.div<{ theme: AppTheme }>`
   text-align: center;
   height: 100%;
-  width: 50%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
 `;
