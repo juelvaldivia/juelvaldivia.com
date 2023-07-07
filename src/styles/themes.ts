@@ -27,9 +27,9 @@ export const darkTheme: AppTheme = {
     background: '#131313',
   },
   fontSizes: {
-    small: '12px',
-    medium: '0.8em',
-    large: '20px',
+    small: '0.5em',
+    medium: '0.7em',
+    large: '0.9em',
   },
   fontWeights: {
     light: '300',
@@ -46,9 +46,9 @@ export const lightTheme: AppTheme = {
     background: '#fff',
   },
   fontSizes: {
-    small: '12px',
-    medium: '0.8em',
-    large: '20px',
+    small: '0.5em',
+    medium: '0.7em',
+    large: '0.9em',
   },
   fontWeights: {
     light: '300',

@@ -16,4 +16,5 @@ export const Text = styled.p`
   font-weight: ${props => props.theme.fontWeights.medium};
   padding: 0px 30px 0px 30px;
   text-indent: 15px;
+  white-space: pre-line;
 `;
