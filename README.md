@@ -1,66 +1,36 @@
-[![Deploy](https://github.com/juelvaldivia/juelvaldivia.com/actions/workflows/ci.yml/badge.svg)](https://github.com/juelvaldivia/juelvaldivia.com/actions/workflows/ci.yml)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/064e3771-582f-43bb-86e5-18ba9afd656f/deploy-status)](https://app.netlify.com/sites/juelvaldivia/deploys)
+## Getting Started
 
-# Description
+First, run the development server:
 
-This project is my own web site you can visit here [juelvaldivia.com](https://juelvaldivia.com).
-is building with ReactJS using TypeScript
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Available Scripts
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-In the project directory, you can run:
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Runs the app in the development mode
-### `npm start`
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Learn More
 
-Run tests using:
-### `npm test`
+To learn more about Next.js, take a look at the following resources:
 
-Run lint using:
-### `npm run lint`
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Build project using:
-### `npm run build`
-#
-# Conventional commits
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Write better commit messages to be happy
+## Deploy on Vercel
 
-## 1. Title (required)
-- Must be start with a capital letter, i.e.
-  #### `Add password validation test`
-  instead of
-  #### `add password validation test`
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## 2. Prefix (required)
-Indicates type of commit
-  - ## feat
-    #### `New feature to user.`
-  - ## fix
-    #### `Fix a bug that affects the user.`
-  - ## perf
-    #### `Changes that improve site performance.`
-  - ## build
-    #### `Changes in the build system, deployment or installation tasks.`
-  - ## ci
-    #### `Changes in continuos delivery.`
-  - ## docs
-    #### `Changes in documentation.`
-  - ## refactor
-    #### ` Refactoring of code such as variable or functions name changes..`
-  - ## style
-    #### `Formatting changes, tabs, spaces, or semicolons, etc. do not affects the user.`
-  - ## test
-    #### `Add test or refactor an existing code.`
-
-
-## 3. Section (optional)
-Location changed
-
-## Bad commit example:
-
-#### `add new code field to the user in login`
-## Good commit example:
-#### `feat(login): add new code field to the user`
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

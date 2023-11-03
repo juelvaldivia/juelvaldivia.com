@@ -1,60 +1,30 @@
 {
-  "name": "juelvaldivia.com",
+  "name": "juelv",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@react-icons/all-files": "^4.1.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.5.2",
-    "@types/node": "^20.3.2",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "@types/react-helmet": "^6.1.6",
-    "@types/styled-components": "^5.1.26",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
-    "eslint": "^8.43.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-icons": "^4.10.1",
-    "react-router-dom": "^6.14.1",
-    "react-scripts": "^5.0.1",
-    "react-snap": "^1.23.0",
-    "react-tsparticles": "^2.10.1",
-    "styled-components": "^5.3.11",
-    "ts-jest": "^29.1.0",
-    "tsparticles": "^2.10.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^3.3.2"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:after": "react-snap",
-    "test": "jest",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
-    "eject": "react-scripts eject"
+    "build": "next build",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "start": "next start",
+    "start:dev": "next dev",
+    "start:build": "next build && npx serve@latest out"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "next": "13.5.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "styled-components": "~6.0.8"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.4",
+    "postcss": "^8",
+    "tailwindcss": "^3",
+    "typescript": "^5"
   }
 }
