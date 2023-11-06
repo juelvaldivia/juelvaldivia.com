@@ -1,78 +1,20 @@
-import React, { useEffect } from 'react';
+import { Github, LinkedIn, Twitter, Youtube } from './Icons';
 
-import { AnimateFadeRight, Container, Link, List, ListItem } from '../styles';
-import { Github, Instagram, LinkedIn, Mastodon, Medium, Twitter, Youtube } from './Icons';
+const Social = (
+  <>
+    <a href="https://github.com/juelvaldivia">
+      <Github classStyle="h-8 w-8 hover:translate-y-1" />
+    </a>
+    <a href="https://twitter.com/juelvaldivia">
+      <Twitter classStyle="h-8 w-8 hover:translate-y-1" />
+    </a>
+    <a href="https://www.linkedin.com/in/juelvaldivia">
+      <LinkedIn classStyle="h-8 w-8 hover:translate-y-1" />
+    </a>
+    <a href="https://www.youtube.com/@juelvaldivia">
+      <Youtube classStyle="h-8 w-8 hover:translate-y-1" />
+    </a>
+  </>
+);
 
-import { useHandlerState } from '../common/useHandlerState';
-import { SocialNetwork } from '../core/entities';
-import { useCoreApp } from '../App';
-
-const getIconByName = (name: string) => {
-  if (name === 'twitter') {
-    return Twitter;
-  }
-  if (name === 'linkedin') {
-    return LinkedIn;
-  }
-  if (name === 'github') {
-    return Github;
-  }
-  if (name === 'mastodon') {
-    return Mastodon;
-  }
-  if (name === 'medium') {
-    return Medium;
-  }
-  if (name === 'youtube') {
-    return Youtube;
-  }
-  if (name === 'instagram') {
-    return Instagram;
-  }
-
-  return null;
-};
-
-const getName = (name: string) => {
-  return <span style={{ fontSize: '0.8em', fontWeight: 400 }}>{name}</span>;
-};
-
-const Social: React.FC = () => {
-  const coreApp = useCoreApp();
-  const socialNetworksState = coreApp.socialNetworksState();
-  const state = useHandlerState(socialNetworksState);
-
-  useEffect(() => {
-    const searchAllSocialNetworks = async () => {
-      socialNetworksState.searchAll();
-    };
-
-    searchAllSocialNetworks();
-  }, [socialNetworksState]);
-
-  switch (state.kind) {
-    case 'LoadingSocialNetworksState': {
-      return <Container>Loading..</Container>;
-    }
-    case 'ErrorGetSocialNetworksState': {
-      return <Container>Unexpected error</Container>;
-    }
-    case 'LoadedSocialNetworksState': {
-      return (
-        <AnimateFadeRight>
-          <List>
-            {state.socialNetworks.map((item: SocialNetwork, index: number) => (
-              <ListItem key={`social-${index}`}>
-                <Link rel="me" href={item.url} target="_blank">
-                  {getIconByName(item.name) || getName(item.name)}
-                </Link>
-              </ListItem>
-            ))}
-          </List>
-        </AnimateFadeRight>
-      );
-    }
-  }
-};
-
-export default Social;
+export { Social };
