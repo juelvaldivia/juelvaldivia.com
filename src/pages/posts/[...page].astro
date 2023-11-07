@@ -34,15 +34,13 @@ const { page } = Astro.props as Props;
 const titleSuffix = ` - ${AppConfig.siteName}`;
 const titleBase = `Blog página ${page.currentPage}`;
 const title = titleBase + titleSuffix;
-const description = 'Aquí puedes encontrar cosas interesantes, las escribo para que no se me olviden.';
+const description =
+  'Aquí puedes encontrar cosas interesantes, las escribo para que no se me olviden.';
 ---
 
 <Base head={{ title, description }}>
   <Section>
-    <PaginationHeader
-      title={title}
-      description={description}
-    />
+    <PaginationHeader title={title} description={description} />
   </Section>
 
   <Section>
