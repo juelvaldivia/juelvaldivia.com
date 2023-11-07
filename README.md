@@ -1,11 +1,11 @@
-# Astro Boilerplate with TypeScript and Tailwind CSS [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40Ixartz)](https://twitter.com/ixartz)
+[![Deploy](https://github.com/juelvaldivia/juelvaldivia.com/actions/workflows/ci.yml/badge.svg)](https://github.com/juelvaldivia/juelvaldivia.com/actions/workflows/ci.yml)
 
-🚀 Astro Boilerplate is starter code for your blog or portfolio based on Astro
-with Tailwind CSS 3.0. ⚡️ Made with Astro, TypeScript, ESLint, Prettier,
-Tailwind CSS.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/064e3771-582f-43bb-86e5-18ba9afd656f/deploy-status)](https://app.netlify.com/sites/juelvaldivia/deploys)
 
-Clone this project and use it to create your own Astro blog. You can check the
-[Astro templates demo](https://creativedesignsguru.com/demo/astro-boilerplate/).
+# Description
+
+This project is my own web site you can visit here [juelvaldivia.com](https://juelvaldivia.com).
+is building with ReactJS using TypeScript
 
 ## Features
 
@@ -51,15 +51,6 @@ ESLint with:
 
 - Node.js and npm
 
-#### Optional
-
-- [nvm](https://github.com/nvm-sh/nvm)
-- [volta](https://volta.sh/)
-
-While Astro-boilerplate should work with the latest Node version, it has been
-tested with the versions in .nvmrc & the bottom of package.json. At current
-writing, that's Node v16.15.1
-
 ### Getting started
 
 Run the following command on your local environment:
@@ -91,12 +82,6 @@ Now, your blog is ready to be deployed. All generated files are located at
 `dist` folder, which you can deploy the folder to any hosting service you
 prefer.
 
-### Deploy to Netlify
-
-Clone this repository on own GitHub account and deploy to Netlify:
-
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ixartz/Astro-boilerplate)
-
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
@@ -110,21 +95,44 @@ All commands are run from the root of the project, from a terminal:
 | `npm run clean`   | Remove `./dist` folder                       |
 | `npm run lint`    | Run ESLint and report styling error          |
 
-### Contributions
 
-Everyone is welcome to contribute to this project.
-Feel free to open an issue if you have question or found a bug.
+# Conventional commits
 
-### Additional Checks
+## Write better commit messages to be happy
 
-This README.md was linted with
-[markdownlint](https://github.com/igorshubovych/markdownlint-cli)
+## 1. Title (required)
+- Must be start with a capital letter, i.e.
+  #### `Add password validation test`
+  instead of
+  #### `add password validation test`
 
-### License
+## 2. Prefix (required)
+Indicates type of commit
+  - ## feat
+    #### `New feature to user.`
+  - ## fix
+    #### `Fix a bug that affects the user.`
+  - ## perf
+    #### `Changes that improve site performance.`
+  - ## build
+    #### `Changes in the build system, deployment or installation tasks.`
+  - ## ci
+    #### `Changes in continuos delivery.`
+  - ## docs
+    #### `Changes in documentation.`
+  - ## refactor
+    #### ` Refactoring of code such as variable or functions name changes..`
+  - ## style
+    #### `Formatting changes, tabs, spaces, or semicolons, etc. do not affects the user.`
+  - ## test
+    #### `Add test or refactor an existing code.`
 
-Licensed under the MIT License, Copyright © 2022
 
----
+## 3. Section (optional)
+Location changed
 
-Made with ♥ by [CreativeDesignsGuru](https://creativedesignsguru.com)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Follow%20%40Ixartz)](https://twitter.com/ixartz)
+## Bad commit example:
+
+#### `add new code field to the user in login`
+## Good commit example:
+#### `feat(login): add new code field to the user`

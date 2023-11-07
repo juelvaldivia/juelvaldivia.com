@@ -1,6 +1,5 @@
+import { FooterCopyright, Section } from '@/components';
 import { AppConfig } from '@/utils/AppConfig';
-
-import { FooterCopyright, Section } from '../components';
 
 const Footer = () => (
   <Section>
