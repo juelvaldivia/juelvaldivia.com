@@ -26,6 +26,6 @@ export default defineConfig({
     },
   },
   integrations: [react(), tailwind({}), sitemap(), robotsTxt()],
-  output: 'server',
+  output: 'hybrid',
   adapter: netlify(),
 });
