@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 
-import netlify from "@astrojs/netlify/functions";
+import netlify from '@astrojs/netlify/functions';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,10 +17,10 @@ export default defineConfig({
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-      theme: 'monokai'
-    }
+      theme: 'monokai',
+    },
   },
   integrations: [react(), tailwind({}), sitemap(), robotsTxt()],
-  output: "server",
-  adapter: netlify()
+  output: 'server',
+  adapter: netlify(),
 });
