@@ -20,6 +20,11 @@ export default defineConfig({
       theme: 'monokai',
     },
   },
+  vite: {
+    ssr: {
+      noExternal: ['react-icons'],
+    },
+  },
   integrations: [react(), tailwind({}), sitemap(), robotsTxt()],
   output: 'server',
   adapter: netlify(),
