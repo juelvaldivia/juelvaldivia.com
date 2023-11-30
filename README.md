@@ -7,23 +7,95 @@
 This project is my own web site you can visit here [juelvaldivia.com](https://juelvaldivia.com).
 is building with ReactJS using TypeScript
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+A complete Blog feature:
 
-Runs the app in the development mode
-### `npm start`
+- 🎈 Syntax Highlighting
+- 🤖 SEO friendly with sitemap.xml and robots.txt
+- ⚙️ RSS feed
+- 📖 Pagination
+- 🌈 Include a dark blog theme
+- ⬇️ Markdown
+- 📦 Image lazy loading
+- 💎 Responsive design
+
+Developer experience first:
+
+- 🔥 Astro
+- 🎨 Tailwind CSS with aspect ratio and typography plugin
+- 🎉 TypeScript
+- ✏️ ESLint compatible with .astro files
+- 🛠 Prettier compatible with .astro files
+- 🦊 Husky
+- 🚫 lint-staged
+- 🚨 Commitlint
+- 🔧 One-click deploy on Netlify (or, manual if you prefer)
+
+ESLint with:
+
+- Airbnb styled guide
+- TypeScript compatible
+- Astro compatible
+- Automatically remove unused imports
+- Import sorting
+- Tailwind CSS plugin
+
+### Philosophy
+
+- Minimal code
+- SEO-friendly
+- 🚀 Production-ready
+
+### Requirements
+
+- Node.js and npm
+
+### Getting started
+
+Run the following command on your local environment:
+
+``` bash
+git clone --depth=1 https://github.com/ixartz/Astro-boilerplate
+cd my-project-name
+npm install
+```
+
+Then, you can run locally in development mode with live reload:
+
+``` bash
+npm run dev
+```
+
+Open [http://localhost:4321](http://localhost:4321) with your favorite browser
+to see your project.
+
+### Deploy to production (manual)
+
+You can create an optimized production build with:
+
+```shell
+npm run build
+```
+
+Now, your blog is ready to be deployed. All generated files are located at
+`dist` folder, which you can deploy the folder to any hosting service you
+prefer.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command           | Action                                       |
+|:----------------  |:-------------------------------------------- |
+| `npm install`     | Installs dependencies                        |
+| `npm run dev`     | Starts local dev server at `localhost:4321`  |
+| `npm run build`   | Build your production site to `./dist/`      |
+| `npm run preview` | Preview your build locally, before deploying |
+| `npm run clean`   | Remove `./dist` folder                       |
+| `npm run lint`    | Run ESLint and report styling error          |
 
 
-Run tests using:
-### `npm test`
-
-Run lint using:
-### `npm run lint`
-
-Build project using:
-### `npm run build`
-#
 # Conventional commits
 
 ## Write better commit messages to be happy
