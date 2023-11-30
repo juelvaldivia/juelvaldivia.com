@@ -1,0 +1,20 @@
+---
+import type { IFrontmatter } from 'astro-boilerplate-components';
+import Base from '@/templates/Base.astro';
+import { Whoiam } from '@/partials/Whoiam';
+import { RecentPosts } from '@/partials/RecentPosts';
+import { AppConfig } from '@/utils/AppConfig';
+import { sortByDate } from '@/utils/Posts';
+
+const allPosts = await Astro.glob<IFrontmatter>('./posts/*.md');
+const sortedPosts = sortByDate(allPosts);
+const lastThreePosts = sortedPosts.slice(0, 3);
+
+const { title } = AppConfig;
+const { description } = AppConfig;
+---
+
+<Base head={{ title, description }}>
+  <Whoiam />
+  <RecentPosts postList={lastThreePosts} />
+</Base>
