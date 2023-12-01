@@ -2,7 +2,7 @@
 import { Footer } from '@/partials/Footer';
 import { Navbar } from '@/partials/Navbar';
 import { AppConfig } from '@/utils/AppConfig';
-
+import GoogleAnalytics from './GoogleAnalytics.astro';
 export interface Props {
   head: {
     title: string;
@@ -17,6 +17,8 @@ const {
 
 <html lang={AppConfig.localeRegion}>
   <head>
+    <!-- Google Analytics Code -->
+    <GoogleAnalytics />
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>{title}</title>
