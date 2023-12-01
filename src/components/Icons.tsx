@@ -4,9 +4,9 @@ import {
   FaLinkedinIn,
   FaMastodon,
   FaMedium,
-  FaTwitter,
   FaYoutube,
 } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { SiBuymeacoffee } from 'react-icons/si';
 
 type IconProps = {
@@ -20,7 +20,7 @@ export const Github = (props: IconProps) => (
   <FaGithub className={props.classStyle} />
 );
 export const Twitter = (props: IconProps) => (
-  <FaTwitter className={props.classStyle} />
+  <FaXTwitter className={props.classStyle} />
 );
 export const Mastodon = (props: IconProps) => (
   <FaMastodon className={props.classStyle} />
