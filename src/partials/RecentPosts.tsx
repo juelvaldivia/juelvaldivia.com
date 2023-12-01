@@ -6,6 +6,7 @@ import { GradientText, Section } from '@/components';
 
 type IRecentPostsProps = {
   postList: MarkdownInstance<IFrontmatter>[];
+  totalPosts: number;
 };
 
 const RecentPosts = (props: IRecentPostsProps) => (
@@ -17,7 +18,7 @@ const RecentPosts = (props: IRecentPostsProps) => (
         </div>
 
         <div className="text-sm">
-          <a href="/posts/">Todas las publicaciones →</a>
+          <a href="/posts/">Todas las publicaciones({props.totalPosts}) →</a>
         </div>
       </div>
     }

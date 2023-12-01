@@ -7,8 +7,9 @@ import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
 
 const allPosts = await Astro.glob<IFrontmatter>('./posts/*.md');
+const totalPosts = allPosts.length;
 const sortedPosts = sortByDate(allPosts);
-const lastThreePosts = sortedPosts.slice(0, 3);
+const lastThreePosts = sortedPosts.slice(0, 6);
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -16,5 +17,5 @@ const { description } = AppConfig;
 
 <Base head={{ title, description }}>
   <Whoiam />
-  <RecentPosts postList={lastThreePosts} />
+  <RecentPosts postList={lastThreePosts} totalPosts={totalPosts}/>
 </Base>

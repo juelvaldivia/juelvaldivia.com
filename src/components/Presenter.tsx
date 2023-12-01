@@ -16,7 +16,7 @@ const Presenter = (props: PresenterProps) => (
 
       <p className="mt-6 text-xl leading-9">{props.description}</p>
 
-      <div className="mt-3 flex gap-1">{props.socialButtons}</div>
+      <div className="mt-5 flex gap-2">{props.socialButtons}</div>
     </div>
   </div>
 );
