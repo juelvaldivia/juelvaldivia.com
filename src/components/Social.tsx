@@ -1,4 +1,4 @@
-import { Github, LinkedIn, Mastodon, Twitter, Youtube } from './Icons';
+import { Github, LinkedIn, Mastodon, RSS, Twitter, Youtube } from './Icons';
 
 const Social = (
   <>
@@ -16,6 +16,9 @@ const Social = (
     </a>
     <a href="https://www.youtube.com/@juelvaldivia" target="_blank">
       <Youtube classStyle="h-9 w-9 hover:translate-y-1" />
+    </a>
+    <a href="rss.xml">
+      <RSS classStyle="h-9 w-9 hover:translate-y-1" />
     </a>
   </>
 );

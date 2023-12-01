@@ -4,6 +4,7 @@ import {
   FaLinkedinIn,
   FaMastodon,
   FaMedium,
+  FaRss,
   FaYoutube,
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -37,3 +38,4 @@ export const Instagram = (props: IconProps) => (
 export const Buymeacoffee = (props: IconProps) => (
   <SiBuymeacoffee className={props.classStyle} />
 );
+export const RSS = (props: IconProps) => <FaRss className={props.classStyle} />;
