@@ -6,14 +6,14 @@ type INewsletterProps = {
 };
 
 const Newsletter = (props: INewsletterProps) => (
-  <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-    <div className="sm:w-7/12">
+  <section className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+    <section className="sm:w-7/12">
       <div className="text-3xl font-bold">{props.title}</div>
 
       <p className="mt-3 text-gray-300">{props.description}</p>
-    </div>
+    </section>
 
-    <div className="w-full sm:w-5/12">
+    <section className="w-full sm:w-5/12">
       <form className="flex rounded-full bg-slate-800 px-4 py-2 focus-within:ring-2 focus-within:ring-cyan-600 hover:ring-2 hover:ring-cyan-600">
         <input className="w-full appearance-none bg-slate-800 focus:outline-none" />
 
@@ -24,8 +24,8 @@ const Newsletter = (props: INewsletterProps) => (
           Subscríbete
         </button>
       </form>
-    </div>
-  </div>
+    </section>
+  </section>
 );
 
 export { Newsletter };

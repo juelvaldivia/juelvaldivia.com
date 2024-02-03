@@ -1,10 +1,6 @@
-import { FooterCopyright, Section } from '@/components';
+import { FooterCopyright } from '@/components';
 import { AppConfig } from '@/utils/AppConfig';
 
-const Footer = () => (
-  <Section>
-    <FooterCopyright siteName={AppConfig.siteName} />
-  </Section>
-);
+const Footer = () => <FooterCopyright siteName={AppConfig.siteName} />;
 
 export { Footer };
