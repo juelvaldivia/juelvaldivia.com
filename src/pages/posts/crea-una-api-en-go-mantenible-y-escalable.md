@@ -1,6 +1,6 @@
 ---
 layout: '@/templates/BasePost.astro'
-title: Construyendo una API en Go mantenible y escalable
+title: Construye una API en Go mantenible y escalable desde 0
 description: Aprende a construir una API en Go siguiendo las mejores prácticas. Desde la configuración del servidor hasta la implementación de rutas.
 pubDate: 2023-12-01T10:00:00Z
 imgSrc: '/assets/images/go.webp'

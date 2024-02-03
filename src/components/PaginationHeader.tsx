@@ -4,11 +4,11 @@ type IPaginationHeaderProps = {
 };
 
 const PaginationHeader = (props: IPaginationHeaderProps) => (
-  <div className="text-center">
+  <header className="text-center">
     <h1 className="text-3xl font-bold">{props.title}</h1>
 
     <div className="mt-3 text-gray-200">{props.description}</div>
-  </div>
+  </header>
 );
 
 export { PaginationHeader };

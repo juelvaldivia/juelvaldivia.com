@@ -5,7 +5,11 @@ module.exports = {
     './node_modules/astro-boilerplate-components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'bg-slate-900': '#000212',
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
