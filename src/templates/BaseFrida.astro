@@ -1,0 +1,28 @@
+---
+import { AppConfig } from '@/utils/AppConfig';
+export interface Props {
+  head: {
+    title: string;
+    description: string;
+  };
+}
+
+const {
+  head: { title, description },
+} = Astro.props as Props;
+---
+
+<html lang={AppConfig.localeRegion}>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{title}</title>
+    <meta name='description' content={description} />
+    <meta name='author' content={AppConfig.author} />
+  </head>
+  <body class='bg-black flex justify-center items-center h-screen w-screen'>
+
+    <slot></slot>
+
+  </body>
+</html>

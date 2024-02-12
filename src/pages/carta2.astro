@@ -1,0 +1,30 @@
+---
+import BaseCarta from '@/templates/BaseCarta.astro';
+import { AppConfig } from '@/utils/AppConfig';
+
+
+const { title } = AppConfig;
+const { description } = AppConfig;
+---
+
+<style>
+  .typewritter h3 {
+    color: white;
+    overflow: hidden;
+    border-right: 0.15em solid lightgreen;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+  }
+ </style>
+
+<BaseCarta head={{ title, description }}>
+  <div class="flex flex-col justify-center items-center h-screen text-white px-4">
+    <img src="/assets/images/fridukyo2.webp" alt="Imagen" class="mx-auto my-4 rounded transition duration-400 ease-in-out" style="max-width: 300px;">
+    <div class="max-w-lg mb-8">
+      <h3 class="mb-4">Tu amor, tu sonrisa, toda tu alegras mi vida.</h3>
+      <h3 class="mb-4">Y sé que te lo digo a cada rato</h3>
+    </div>
+    <a href="/frida/" class="bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded transition duration-300 ease-in-out">pero en verdad</a>
+  </div>
+</BaseCarta>
