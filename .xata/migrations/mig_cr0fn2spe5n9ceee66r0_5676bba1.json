@@ -1,0 +1,16 @@
+{
+  "id": "mig_cr0fn2spe5n9ceee66r0",
+  "parentID": "mig_cr0fm9spe5n9ceee66q0",
+  "checksum": "1:5676bba102bb141633875be5fcf9396a2d963cdcf11b5a7796a0c3d4de86c0fb",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "name",
+          "type": "text"
+        },
+        "table": "guests"
+      }
+    }
+  ]
+}

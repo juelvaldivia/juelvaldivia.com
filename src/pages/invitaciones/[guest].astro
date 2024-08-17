@@ -1,0 +1,40 @@
+---
+import BaseCarta from '@/templates/BaseCarta.astro';
+import { AppConfig } from '@/utils/AppConfig';
+import { getXataClient } from '@/database/xata';
+
+const { title } = AppConfig;
+const { description } = AppConfig;
+const guestId = Astro.params.guest;
+
+const xata = getXataClient();
+
+const guest = await xata.db.guests.read(guestId);
+
+export function getStaticPaths() {
+  return [
+    { params: { guest: 'rec_cr0fr5b76hdf5dr02540' } }
+  ];
+}
+---
+
+<style>
+  .typewritter h3 {
+    color: white;
+    overflow: hidden;
+    border-right: 0.15em solid lightgreen;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+  }
+ </style>
+
+<BaseCarta head={{ title, description }}>
+  <div class="flex flex-col justify-center items-center h-screen text-white px-4">
+    <div class="max-w-lg mb-8">
+      <h3 class="mb-4">Que onda {guest.name} nos complace invitarte a nuestra revelación del bebé</h3>
+      <h3 class="mb-4">Que onda {guest.confirmed}</h3>
+    </div>
+    <a href="/carta1/" class="bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 rounded transition duration-300 ease-in-out">Confirmar</a>
+  </div>
+</BaseCarta>
