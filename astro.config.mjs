@@ -28,4 +28,10 @@ export default defineConfig({
   integrations: [react(), tailwind({}), sitemap(), robotsTxt()],
   output: 'hybrid',
   adapter: netlify(),
+  routes: [
+    {
+      path: '/invitaciones/:guest',
+      component: 'src/pages/invitaciones/[guest].astro',
+    },
+  ],
 });
