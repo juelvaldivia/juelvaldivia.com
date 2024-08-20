@@ -25,6 +25,7 @@ export async function getStaticPaths() {
     }
   })
 }
+
 ---
 
 <InvitationsLayout head={{ title, description }}>
@@ -43,6 +44,9 @@ export async function getStaticPaths() {
       <p class="text-lg">Habrá juegos, comida y diversión para todos!</p>
     </div>
     <div class="text-center">
+      {guest?.confirmed !== null && (<div>
+        Tu ultima confirmación fue: {guest?.confirmed === true ? 'Si podré asistir' : 'No podré asistir'}
+        </div>)}
       {<FormConfirm guest={{name: guest?.name, id: guest?.id}}></FormConfirm>}
     </div>
   </div>
