@@ -9,7 +9,7 @@ const guestId = Astro.params.guest;
 
 const xata = getXataClient();
 const guest = await xata.db.guests.update(guestId, {
-  genre: 'girl',
+  genre: 'girl'
 });
 
 export async function getStaticPaths() {
