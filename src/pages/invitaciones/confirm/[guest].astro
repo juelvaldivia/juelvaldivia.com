@@ -28,6 +28,9 @@ export async function getStaticPaths() {
     }
   })
 }
+
+export const prerender = true;
+
 ---
 
 <InvitationsLayout head={{ title, description }}>

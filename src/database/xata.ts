@@ -16,6 +16,7 @@ const tables = [
       { name: 'phone', type: 'text' },
       { name: 'event_id', type: 'text' },
       { name: 'confirmed', type: 'bool' },
+      { name: 'genre', type: 'text' },
     ],
   },
 ] as const;
@@ -33,6 +34,7 @@ export type DatabaseSchema = {
 const DatabaseClient = buildClient();
 const defaultOptions = {
   databaseURL: process.env.XATA_DATABASE_NAME,
+  branch: process.env.XATA_BRANCH,
   apiKey: process.env.XATA_API_KEY,
 };
 

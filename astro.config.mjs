@@ -26,16 +26,6 @@ export default defineConfig({
     },
   },
   integrations: [react(), tailwind({}), sitemap(), robotsTxt()],
-  output: 'hybrid',
+  output: 'server',
   adapter: netlify(),
-  routes: [
-    {
-      path: '/invitaciones/:guest',
-      component: 'src/pages/invitaciones/[guest].astro',
-    },
-    {
-      path: '/invitaciones/no-confirm/:guest',
-      component: 'src/pages/invitaciones/no-confirm/[guest].astro',
-    },
-  ],
 });
