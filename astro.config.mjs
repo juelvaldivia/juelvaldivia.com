@@ -33,5 +33,9 @@ export default defineConfig({
       path: '/invitaciones/:guest',
       component: 'src/pages/invitaciones/[guest].astro',
     },
+    {
+      path: '/invitaciones/no-confirm/:guest',
+      component: 'src/pages/invitaciones/no-confirm/[guest].astro',
+    },
   ],
 });

@@ -1,0 +1,41 @@
+---
+import { AppConfig } from '@/utils/AppConfig';
+export interface Props {
+  head: {
+    title: string;
+    description: string;
+  };
+}
+
+const {
+  head: { title, description },
+} = Astro.props as Props;
+---
+
+<html lang={AppConfig.localeRegion}>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{title}</title>
+    <meta name='description' content={description} />
+    <meta name='author' content={AppConfig.author} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Pompiere&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: "Pompiere", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body class=' h-screen w-screen bg-gradient-to-r from-[#86d1f0] to-[#febeda]'>
+    <div class="absolute inset-0 bg-center bg-repeat opacity-75"
+       style="background-image: url('/assets/images/background.png');">
+  </div>
+  <div class="relative z-10">
+    <slot></slot>
+  </div>
+  </body>
+</html>
