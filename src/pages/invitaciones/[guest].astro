@@ -4,6 +4,7 @@ import {FormConfirm} from '@/components/FormConfirm';
 import { AppConfig } from '@/utils/AppConfig';
 import { getXataClient } from '@/database/xata';
 
+
 const { title } = AppConfig;
 const { description } = AppConfig;
 const guestId = Astro.params.guest;
@@ -25,6 +26,8 @@ export async function getStaticPaths() {
     }
   })
 }
+
+export const prerender = false;
 
 ---
 
