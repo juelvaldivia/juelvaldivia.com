@@ -2,6 +2,7 @@ import type { GuestsRecord } from '../database/xata';
 
 type IFormProps = {
   guest: GuestsRecord;
+  endDate?: string | undefined | null;
 };
 
 const FormConfirm = (props: IFormProps) => {
@@ -9,24 +10,47 @@ const FormConfirm = (props: IFormProps) => {
   const noConfirmUrl = `/invitaciones/no-confirm/${props.guest.id}/`;
 
   return (
-    <div className="mx-auto max-w-screen-lg px-3 py-6">
-      <p className="text-lg">Confirma tu asistencia:</p>
-      <div className="flex justify-center space-x-4">
+    <section className="scale-90">
+      {props.guest.confirmed === null && (
+        <p className="mb-4 font-extrabold uppercase">Vasir o no vasir?</p>
+      )}
+
+      {props.guest.confirmed !== null && (
+        <div>
+          <p className="mb-4 font-bold">Quieres cambiar de opinión?</p>
+          {props.endDate && (
+            <>
+              <p className="mb-4 font-extrabold">
+                Recuerda que puedes hacerlo antes del:{' '}
+              </p>
+              <p className="mb-4 font-extrabold">{props.endDate}</p>
+            </>
+          )}
+          <p className="mb-4 text-lg">
+            * Tu última confirmación fue:
+            <label className="text-lg">
+              {props.guest.confirmed === true
+                ? ' Si podré asistir'
+                : ' No podré asistir'}
+            </label>
+          </p>
+        </div>
+      )}
+      <div className="flex justify-center space-x-4 py-4">
         <a
           href={confirmUrl}
-          className="rounded bg-blue-300 px-4 py-2 font-bold text-white hover:bg-[#86d1f0]"
+          className="rounded border border-blue-400 bg-blue-300 px-8 py-4 font-extrabold uppercase text-white transition delay-150 duration-300 ease-in-out hover:bg-[#86d1f0]"
         >
-          Sí, voy
-          <i className="fa fa-check fa-lg ml-2"></i>
+          Si voyir
         </a>
         <a
           href={noConfirmUrl}
-          className="rounded bg-pink-400 px-4 py-2 font-bold text-white hover:bg-[#febeda]"
+          className="rounded border border-pink-500 bg-pink-400 px-8 py-4 font-extrabold uppercase text-white hover:bg-[#febeda]"
         >
-          No, no puedo
+          No voyir
         </a>
       </div>
-    </div>
+    </section>
   );
 };
 

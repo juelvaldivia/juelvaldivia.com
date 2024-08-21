@@ -19,6 +19,15 @@ const tables = [
       { name: 'genre', type: 'text' },
     ],
   },
+  {
+    name: 'events',
+    columns: [
+      { name: 'name', type: 'text' },
+      { name: 'limitDateToConfirm', type: 'text' },
+      { name: 'date', type: 'text' },
+      { name: 'place', type: 'text' },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -27,8 +36,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Guests = InferredTypes['guests'];
 export type GuestsRecord = Guests & XataRecord;
 
+export type Events = InferredTypes['events'];
+export type EventsRecord = Events & XataRecord;
+
 export type DatabaseSchema = {
   guests: GuestsRecord;
+  events: EventsRecord;
 };
 
 const DatabaseClient = buildClient();
