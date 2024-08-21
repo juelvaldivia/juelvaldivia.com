@@ -1,4 +1,6 @@
+export * from './CountDown';
 export * from './FooterCopyright';
+export * from './FormConfirm';
 export * from './GradientText';
 export * from './Icons';
 export * from './Logo';
