@@ -12,12 +12,12 @@ const FormConfirm = (props: IFormProps) => {
   return (
     <section className="scale-90">
       {props.guest.confirmed === null && (
-        <p className="mb-4 font-extrabold uppercase">Vasir o no vasir?</p>
+        <p className="font-extrabold uppercase">Vasir o no vasir?</p>
       )}
 
       {props.guest.confirmed !== null && (
         <div>
-          <p className="mb-4 font-bold">Quieres cambiar de opinión?</p>
+          <p className="font-bold">Quieres cambiar de opinión?</p>
           {props.endDate && (
             <>
               <p className="mb-4 font-extrabold">
@@ -28,10 +28,10 @@ const FormConfirm = (props: IFormProps) => {
           )}
           <p className="mb-4 text-lg">
             * Tu última confirmación fue:
-            <label className="text-lg">
+            <label className="text-2xl">
               {props.guest.confirmed === true
                 ? ' Si podré asistir'
-                : ' No podré asistir'}
+                : ' No podré asistir :c'}
             </label>
           </p>
         </div>
@@ -39,13 +39,13 @@ const FormConfirm = (props: IFormProps) => {
       <div className="flex justify-center space-x-4 py-4">
         <a
           href={confirmUrl}
-          className="rounded border border-blue-400 bg-blue-300 px-8 py-4 font-extrabold uppercase text-white transition delay-150 duration-300 ease-in-out hover:bg-[#86d1f0]"
+          className="rounded border border-[#5787e9] bg-[#80b0ff] px-8 py-4 font-extrabold uppercase text-white transition delay-150 duration-300 ease-in-out hover:bg-[#86d1f0]"
         >
           Si voyir
         </a>
         <a
           href={noConfirmUrl}
-          className="rounded border border-pink-500 bg-pink-400 px-8 py-4 font-extrabold uppercase text-white hover:bg-[#febeda]"
+          className="rounded border border-[#eda7fb] bg-[#ffc1d9] px-8 py-4 font-extrabold uppercase text-white hover:bg-[#febeda]"
         >
           No voyir
         </a>

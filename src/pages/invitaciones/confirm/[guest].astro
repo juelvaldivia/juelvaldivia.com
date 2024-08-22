@@ -2,6 +2,7 @@
 import InvitationsLayout from '@/templates/Invitations.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { getXataClient } from '@/database/xata';
+import { FooterInvite, GenderRevealFlags } from '@/components';
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -34,13 +35,25 @@ export const prerender = false;
 ---
 
 <InvitationsLayout head={{ title, description }}>
-  <section class="rounded-2xl shadow-md bg-white/30 scale-90 py-4">
-    <h1 class="text-4xl font-bold mb-4">{guest?.name}</h1>
-    <p class="text-center p-4">
-      Estamos muy contentos de que puedas asistir, ahora ayudanos con tu pronóstico:
-    </p>
+  <section class="rounded-2xl bg-white scale-90">
+    <GenderRevealFlags />
+    <div class="flex justify-center pt-4">
+      <p class="text-3xl uppercase tracking-widest">
+        {guest?.name}
+      </p>
+    </div>
+
+    <div class="flex justify-center pb-8 pt-4 pr-4 pl-4">
+      <p class="text-md tracking-widest">
+        Estamos muy contentos de que puedas asistir,
+        ahora ayudanos con tu pronóstico:
+      </p>
+    </div>
+
     <div class="flex justify-center p-8">
-      <p class="text-4xl">Será niño o niña?</p>
+      <p class="text-3xl uppercase tracking-widest">
+        tu dices que será
+      </p>
     </div>
     <div class="flex justify-center space-x-4">
       <a
@@ -56,5 +69,6 @@ export const prerender = false;
         Niña
       </a>
     </div>
+    <FooterInvite/>
   </section>
 </InvitationsLayout>

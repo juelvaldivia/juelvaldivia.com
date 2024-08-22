@@ -2,6 +2,7 @@
 import InvitationsLayout from '@/templates/Invitations.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { getXataClient } from '@/database/xata';
+import { FooterInvite, GenderRevealFlags } from '@/components';
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -11,6 +12,22 @@ const xata = getXataClient();
 const guest = await xata.db.guests.update(guestId, {
   genre: 'boy'
 });
+
+const event = await xata.db.events.read(guest?.event_id);
+const originalDate = new Date(event?.date);
+const optionsDate = {
+  timeZone: 'America/Mexico_City',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+};
+const optionsHour = {
+  timeZone: 'America/Mexico_City',
+  hour: '2-digit',
+  minute: '2-digit'
+};
+const dateMX = originalDate.toLocaleString('es-MX', optionsDate);
+const hourMX = originalDate.toLocaleString('es-MX', optionsHour);
 
 export async function getStaticPaths() {
   const xata = getXataClient();
@@ -32,13 +49,43 @@ export const prerender = false;
 ---
 
 <InvitationsLayout head={{ title, description }}>
-  <div class="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-  <div class="text-center mb-8">
-    <h1 class="text-4xl font-bold p-4">{guest?.name}</h1>
-    <p class="text-4xl p-4">Eres team Frida!</p>
-    <p class="text-2xl">Entonces te esperamos en punto de las 12pm en: </p>
-    <p class="text-2xl">Guarda el evento en tu calendario</p>
-    <p class="text-2xl">Nos vemos ahí!</p>
-  </div>
-  </div>
+  <section class="rounded-2xl bg-white scale-90">
+    <GenderRevealFlags />
+    <div class="flex justify-center pt-4">
+      <p class="text-3xl uppercase tracking-widest">
+        {guest?.name}
+      </p>
+    </div>
+
+    <div class="flex justify-center pt-8">
+      <p class="uppercase tracking-widest">
+        Frida opina lo mismo!
+      </p>
+    </div>
+
+    <div class="flex justify-center pb-8 pt-4 pr-4 pl-4">
+      <p class="text-md tracking-widest">
+        Entonces te esperamos el
+      </p>
+    </div>
+
+    <div class="flex flex-col justify-center pb-8">
+      <p class="text-xl tracking-widest whitespace-pre-line">
+        {dateMX}
+      </p>
+      <p class="text-xl tracking-widest whitespace-pre-line">
+        {hourMX}
+      </p>
+      <p class="text-xl tracking-widest mt-2">
+        {event?.place}
+      </p>
+    </div>
+
+    <div class="flex justify-center p-8">
+      <p class="text-3xl uppercase tracking-widest">
+        Nos vemos ahí!
+      </p>
+    </div>
+    <FooterInvite/>
+  </section>
 </InvitationsLayout>
