@@ -1,6 +1,6 @@
 ---
 import InvitationsLayout from '@/templates/Invitations.astro';
-import { FormConfirm, Countdown } from '@/components';
+import { FormConfirm, FooterInvite, GenderRevealCover } from '@/components';
 import { AppConfig } from '@/utils/AppConfig';
 import { getXataClient } from '@/database/xata';
 
@@ -14,16 +14,21 @@ const guest = await xata.db.guests.read(guestId);
 const event = await xata.db.events.read(guest?.event_id);
 const originalLimitDateToConfirm = new Date(event?.limitDateToConfirm);
 const originalDate = new Date(event?.date);
-const options = {
+const optionsDate = {
   timeZone: 'America/Mexico_City',
   year: 'numeric',
   month: 'long',
-  day: 'numeric',
+  day: 'numeric'
+};
+
+const optionsHour = {
+  timeZone: 'America/Mexico_City',
   hour: '2-digit',
   minute: '2-digit'
 };
-const dateMX = originalDate.toLocaleString('es-MX', options);
-const limitDateToConfirmMX = originalLimitDateToConfirm.toLocaleString('es-MX', options);
+const dateMX = originalDate.toLocaleString('es-MX', optionsDate);
+const hourMX = originalDate.toLocaleString('es-MX', optionsHour);
+const limitDateToConfirmMX = originalLimitDateToConfirm.toLocaleString('es-MX', optionsDate);
 
 export async function getStaticPaths() {
   const xata = getXataClient();
@@ -45,36 +50,63 @@ export const prerender = false;
 ---
 
 <InvitationsLayout head={{ title, description }}>
-  <section class="rounded-2xl shadow-md scale-90 p-4 bg-gradient-to-r opacity-75 to-[#86d1f0] from-[#febeda]">
-    <h1 class="text-6xl font-extrabold mb-4">{event?.name}</h1>
-  </section>
+  <section class="rounded-2xl bg-white scale-90">
+    <GenderRevealCover/>
+    <div class="flex justify-center pt-4">
+      <p class="text-4xl uppercase tracking-widest">
+        Hola
+      </p>
+    </div>
 
-  <section class="rounded-2xl shadow-md bg-white/30 scale-90 py-4">
-    <h1 class="text-4xl font-bold mb-4">Hola {guest?.name}</h1>
-    <p class="font-extrabold">
-      Un nuevo bebé está por llegar
-    </p>
-    <p class="text-center p-4">
-      Frida y Joel, quienes seremos los papás,
-      te consideramos una persona importante
-    </p>
-    <p class="text-center p-4">
-      Así que esta gran noticia queremos compartirla y sorprendernos juntos
-    </p>
-  </section>
+    <div class="flex justify-center pt-2">
+      <p class="text-3xl uppercase tracking-widest">
+        {guest?.name}
+      </p>
+    </div>
 
-  <section class="rounded-2xl shadow-md bg-white/30 scale-90 py-4">
-    <h1 class="text-4xl font-bold mb-4">Dónde y Cúando?</h1>
-    <p>{dateMX}</p>
-    <p>en {event?.place}</p>
-    <Countdown targetDate={originalDate}></Countdown>
-  </section>
+    <div class="flex justify-center pt-8">
+      <p class="uppercase tracking-widest">
+        Frida & Joel
+      </p>
+    </div>
 
-  <section class="confirm shadow-md bg-white/30 scale-90 py-4">
+    <div class="flex justify-center pb-8 pt-0 pr-4 pl-4">
+      <p class="text-md tracking-widest">
+        como futuros papás,
+        queremos compartir nuestra
+        emoción contigo y
+        sorprendernos juntos
+        con la revelación de sexo de nuestro bebé
+      </p>
+    </div>
+
+    <hr class="pt-4">
+
+    <div class="flex justify-center p-4">
+      <p class="text-3xl uppercase tracking-widest">
+        Fecha y lugar
+      </p>
+    </div>
+
+    <div class="flex flex-col justify-center pb-8">
+      <p class="text-xl tracking-widest whitespace-pre-line">
+        {dateMX}
+      </p>
+      <p class="text-xl tracking-widest whitespace-pre-line">
+        {hourMX}
+      </p>
+      <p class="text-xl tracking-widest mt-2">
+        {event?.place}
+      </p>
+    </div>
+
+    <hr class="pt-4">
+
     {<FormConfirm
       guest={{id: guest?.id, name: guest?.name, confirmed: guest?.confirmed}}
       endDate={limitDateToConfirmMX}
       >
       </FormConfirm>}
+    <FooterInvite/>
   </section>
 </InvitationsLayout>

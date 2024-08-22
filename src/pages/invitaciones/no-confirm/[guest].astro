@@ -2,6 +2,7 @@
 import InvitationsLayout from '@/templates/Invitations.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { getXataClient } from '@/database/xata';
+import { FooterInvite, GenderRevealFlags } from '@/components';
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -33,8 +34,32 @@ export const prerender = false;
 ---
 
 <InvitationsLayout head={{ title, description }}>
-  <h1 class="text-4xl font-bold caveat-cursive">{guest?.name}</h1>
-  <p class="text-4xl p-4">
-    lastima que no nos puedas acompañar :c
-  </p>
+  <section class="rounded-2xl bg-white scale-90">
+    <GenderRevealFlags />
+    <div class="flex justify-center pt-4">
+      <p class="text-3xl uppercase tracking-widest">
+        {guest?.name}
+      </p>
+    </div>
+
+    <div class="flex justify-center pb-8 pt-4 pr-4 pl-4">
+      <p class="text-md tracking-widest">
+        No hay problema si no puedes asistir al evento de revelación,
+        lo importante es que estés con nosotros en espíritu.
+      </p>
+    </div>
+
+    <div class="flex justify-center pb-8 pt-4 pr-4 pl-4">
+      <p class="text-md tracking-widest">
+        Esperamos verte pronto y compartir contigo nuestras alegrías.
+      </p>
+    </div>
+
+    <div class="flex justify-center pt-8">
+      <p class="uppercase tracking-widest">
+        Un abrazo!
+      </p>
+    </div>
+    <FooterInvite/>
+  </section>
 </InvitationsLayout>
