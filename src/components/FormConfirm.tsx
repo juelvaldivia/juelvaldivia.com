@@ -39,7 +39,7 @@ const FormConfirm = (props: IFormProps) => {
       <div className="flex justify-center space-x-4 py-4">
         <a
           href={confirmUrl}
-          className="rounded border border-[#5787e9] bg-[#80b0ff] px-8 py-4 font-extrabold uppercase text-white transition delay-150 duration-300 ease-in-out hover:bg-[#86d1f0]"
+          className="animate-pulse rounded border border-[#5787e9] bg-[#80b0ff] px-8 py-4 font-extrabold uppercase text-white transition delay-150 duration-300 ease-in-out hover:bg-[#86d1f0]"
         >
           Si voyir
         </a>

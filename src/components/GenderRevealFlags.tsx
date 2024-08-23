@@ -5,7 +5,7 @@ export function GenderRevealFlags() {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 419.528 100"
       xmlSpace="preserve"
-      className="h-auto w-full max-w-[419.528px]"
+      className="max-w-auto h-auto w-full animate-pulse"
     >
       <g
         style={{
