@@ -1,9 +1,11 @@
 ---
+import { MdLocationOn } from 'react-icons/md';
+
 import InvitationsLayout from '@/templates/Invitations.astro';
 import { FormConfirm, FooterInvite, GenderRevealCover } from '@/components';
 import { AppConfig } from '@/utils/AppConfig';
 import { getXataClient } from '@/database/xata';
-
+import { formatEventDateTime } from '@/lib/dateUtils';
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -12,23 +14,10 @@ const guestId = Astro.params.guest;
 const xata = getXataClient();
 const guest = await xata.db.guests.read(guestId);
 const event = await xata.db.events.read(guest?.event_id);
-const originalLimitDateToConfirm = new Date(event?.limitDateToConfirm);
-const originalDate = new Date(event?.date);
-const optionsDate = {
-  timeZone: 'America/Mexico_City',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-};
 
-const optionsHour = {
-  timeZone: 'America/Mexico_City',
-  hour: '2-digit',
-  minute: '2-digit'
-};
-const dateMX = originalDate.toLocaleString('es-MX', optionsDate);
-const hourMX = originalDate.toLocaleString('es-MX', optionsHour);
-const limitDateToConfirmMX = originalLimitDateToConfirm.toLocaleString('es-MX', optionsDate);
+const { dateMX, hourMX } = formatEventDateTime(event?.date);
+const { dateMX: limitDateToConfirmMX } = formatEventDateTime(event?.limitDateToConfirm);
+const googleMapsURL = `https://www.google.com/maps/place/${event?.place}`
 
 export async function getStaticPaths() {
   const xata = getXataClient();
@@ -95,9 +84,19 @@ export const prerender = false;
       <p class="text-xl tracking-widest whitespace-pre-line">
         {hourMX}
       </p>
-      <p class="text-xl tracking-widest mt-2">
+      <p class="text-md tracking-widest mt-2 break-words w-50">
         {event?.place}
       </p>
+      <div class="flex justify-center space-x-4 py-4">
+        <a
+          href={googleMapsURL}
+          target="_blank"
+          class="animate-pulse rounded border border-[#a99c93] text-[#a99c93] px-8 py-4 font-extrabold uppercase flex items-center"
+        >
+          <MdLocationOn className="mr-2" size={24} />
+          <span>Cómo llegar?</span>
+        </a>
+      </div>
     </div>
 
     <hr class="pt-4 animate-bounce">
