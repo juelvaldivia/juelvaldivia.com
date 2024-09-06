@@ -1,8 +1,14 @@
 ---
+import { MdLocationOn } from 'react-icons/md';
+import { SiGooglecalendar } from "react-icons/si";
+import { IoCalendarNumberOutline } from "react-icons/io5";
+
 import InvitationsLayout from '@/templates/Invitations.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { getXataClient } from '@/database/xata';
 import { FooterInvite, GenderRevealFlags } from '@/components';
+import { formatEventDateTime } from '@/lib/dateUtils';
+import { createGoogleCalendarLink, createOutlookCalendarLink } from '@/lib/calendar';
 
 const { title } = AppConfig;
 const { description } = AppConfig;
@@ -14,20 +20,10 @@ const guest = await xata.db.guests.update(guestId, {
 });
 
 const event = await xata.db.events.read(guest?.event_id);
-const originalDate = new Date(event?.date);
-const optionsDate = {
-  timeZone: 'America/Mexico_City',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-};
-const optionsHour = {
-  timeZone: 'America/Mexico_City',
-  hour: '2-digit',
-  minute: '2-digit'
-};
-const dateMX = originalDate.toLocaleString('es-MX', optionsDate);
-const hourMX = originalDate.toLocaleString('es-MX', optionsHour);
+const { dateMX, hourMX } = formatEventDateTime(event?.date);
+const googleCalendarLink = createGoogleCalendarLink(event);
+const outlookCalendarLink = createOutlookCalendarLink(event);
+const googleMapsURL = `https://www.google.com/maps/place/${event?.place}`
 
 export async function getStaticPaths() {
   const xata = getXataClient();
@@ -51,17 +47,21 @@ export const prerender = false;
 <InvitationsLayout head={{ title, description }}>
   <section class="rounded-2xl bg-white scale-90">
     <GenderRevealFlags />
-    <div class="flex justify-center pt-4">
+    <div class="flex justify-center p-6">
       <p class="text-3xl uppercase tracking-widest">
         {guest?.name}
       </p>
     </div>
 
-    <div class="flex justify-center pt-8">
+    <hr class="pt-4">
+
+    <div class="flex justify-center p-8">
       <p class="uppercase tracking-widest">
         Frida opina lo mismo!
       </p>
     </div>
+
+    <hr class="pt-4">
 
     <div class="flex justify-center pb-8 pt-4 pr-4 pl-4">
       <p class="text-md tracking-widest">
@@ -76,9 +76,38 @@ export const prerender = false;
       <p class="text-xl tracking-widest whitespace-pre-line">
         {hourMX}
       </p>
-      <p class="text-xl tracking-widest mt-2">
-        {event?.place}
+      <div class="flex justify-center space-x-4 py-4">
+        <a
+          href={googleMapsURL}
+          target="_blank"
+          class="animate-pulse rounded border border-[#a99c93] text-[#a99c93] px-8 py-4 font-extrabold uppercase flex items-center"
+        >
+          <MdLocationOn className="mr-2" size={24} />
+          <span>Cómo llegar?</span>
+        </a>
+      </div>
+
+      <p class="animate-bounce tracking-widest whitespace-pre-line">
+        Apuntalo en tu calendario
       </p>
+      <div class="flex justify-center justify-center">
+        <a
+          href={googleCalendarLink}
+          target="_blank"
+          class="animate-bounce rounded border border-[#a99c93] text-[#a99c93] m-2 p-2 font-extrabold uppercase flex items-center"
+        >
+          <SiGooglecalendar className="mr-2" size={24} />
+          Google
+        </a>
+        <a
+          href={outlookCalendarLink}
+          target="_blank"
+          class="animate-bounce rounded border border-[#a99c93] text-[#a99c93] m-2 p-2 font-extrabold uppercase flex items-center"
+        >
+          <IoCalendarNumberOutline className="mr-2" size={24} />
+          Outlook
+        </a>
+      </div>
     </div>
 
     <div class="flex justify-center p-8">

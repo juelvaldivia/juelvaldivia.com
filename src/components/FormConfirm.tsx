@@ -1,3 +1,5 @@
+import { MdCancel, MdCheckCircle } from 'react-icons/md';
+
 import type { GuestsRecord } from '../database/xata';
 
 type IFormProps = {
@@ -39,15 +41,17 @@ const FormConfirm = (props: IFormProps) => {
       <div className="flex justify-center space-x-4 py-4">
         <a
           href={confirmUrl}
-          className="animate-pulse rounded border border-[#5787e9] bg-[#80b0ff] px-8 py-4 font-extrabold uppercase text-white transition delay-150 duration-300 ease-in-out hover:bg-[#86d1f0]"
+          className="flex items-center rounded border border-[#5787e9] bg-[#80b0ff] px-8 py-4 font-extrabold uppercase text-white transition delay-150 duration-300 ease-in-out hover:bg-[#86d1f0]"
         >
-          Si voyir
+          <MdCheckCircle className="mr-2" size={24} />
+          Si voy
         </a>
         <a
           href={noConfirmUrl}
-          className="rounded border border-[#eda7fb] bg-[#ffc1d9] px-8 py-4 font-extrabold uppercase text-white hover:bg-[#febeda]"
+          className="flex items-center rounded border border-[#eda7fb] bg-[#ffc1d9] px-8 py-4 font-extrabold uppercase text-white hover:bg-[#febeda]"
         >
-          No voyir
+          <MdCancel className="mr-2" size={24} />
+          No voy
         </a>
       </div>
     </section>

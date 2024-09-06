@@ -1,4 +1,7 @@
 ---
+import { FaChild } from "react-icons/fa6";
+import { FaChildDress } from "react-icons/fa6";
+
 import InvitationsLayout from '@/templates/Invitations.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { getXataClient } from '@/database/xata';
@@ -52,21 +55,22 @@ export const prerender = false;
 
     <div class="flex justify-center p-8">
       <p class="text-3xl uppercase tracking-widest">
-        tu dices que será
+        tu dices que será..
       </p>
     </div>
     <div class="flex justify-center space-x-4">
       <a
-      href={boyUrl}
-      class="uppercase transition delay-150 duration-300 ease-in-out rounded border border-blue-400 bg-blue-300 px-8 py-4 font-extrabold text-white hover:bg-[#86d1f0]"
+        href={boyUrl}
+        class="uppercase transition delay-150 duration-300 ease-in-out rounded border border-blue-400 bg-blue-300 px-8 py-4 font-extrabold text-white hover:bg-[#86d1f0] flex items-center"
       >
-        Niño
+        <FaChild size={50} />
+
       </a>
       <a
-      href={girlUrl}
-      class="uppercase rounded border border-pink-500 bg-pink-400 px-8 py-4 font-extrabold text-white hover:bg-[#febeda]"
+        href={girlUrl}
+        class="uppercase rounded border border-pink-500 bg-pink-400 px-8 py-4 font-extrabold text-white hover:bg-[#febeda] flex items-center"
       >
-        Niña
+        <FaChildDress size={50} />
       </a>
     </div>
     <FooterInvite/>
