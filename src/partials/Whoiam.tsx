@@ -8,11 +8,10 @@ const Title = (
 
 const Description = (
   <>
-    Ingeniero de software con {new Date().getFullYear() - 2016}+ años de
-    experiencia. Apasionado por crear software de alta calidad con experiencia
-    en arquitectura de software, testing, código limpio y buenas prácticas.
-    Tengo este espacio para compartir un poco de mi experiencia, espero te ayude
-    en algo.
+    Ingeniero de software desde 2015. Apasionado por crear SaaS escalables para
+    automatizar procesos. Exploro ideas como automatización para negocios (e.g.,
+    wedding planners). Sígueme en YouTube para mi aventura de construir un
+    negocio en línea paso a paso.
   </>
 );
 
